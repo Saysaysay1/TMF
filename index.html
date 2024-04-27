@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Message to Friends</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(45deg, #f3f4f6, #e1e2e6);
+        animation: backgroundAnimation 20s infinite alternate;
+    }
+
+    @keyframes backgroundAnimation {
+        0% {
+            background-position: 0% 50%;
+        }
+        100% {
+            background-position: 100% 50%;
+        }
+    }
+
+    .container {
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    h4 {
+        color: #333;
+        text-align: left;
+        margin-left: 20px;
+        animation: slideInLeft 1s ease;
+    }
+
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    p {
+        color: black;
+        margin-bottom: 20px;
+        animation: slideInRight 1s ease;
+    }
+
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* Modal styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.5);
+        animation: fadeIn 0.5s ease;
+    }
+
+    .modal-content {
+        background-color: cyan;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        border-radius: 10px;
+        position: relative;
+        animation: slideInUp 0.5s ease;
+    }
+
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Close button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        animation: fadeIn 1s ease;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    img { 
+    max-width: 100%; 
+    height: auto; 
+    transition: transform 0.3s ease-in-out;
+    }
+
+    img:hover {
+    transform: scale(1.1);
+    }
+
+    /* Heart confetti animation */
+    @keyframes confetti {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(600px) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    .heart {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: red; /* Or any other color you prefer */
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        animation: confetti 5s ease-out infinite;
+    }
+    .welcome-animation {
+    animation: slideInUp 1s ease, colorChange 3s infinite alternate;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes colorChange {
+    0% {
+        color: #333; /* Initial color */
+    }
+    50% {
+        color: #FF5733;/* Target color */
+    }
+    100% {
+        color: #333; /* Back to initial color */
+    }
+}
+#guestbook {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#guestbook h4 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#messageInput {
+    width: calc(100% - 20px);
+    margin: 0 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#guestbook button {
+    background-color: green; /* Green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#guestbook button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+#messages {
+    margin-top: 10px;
+}
+
+#messages p {
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+
+</style>
+</head>
+<body>
+<div class="container">
+    <h2 class="welcome-animation">Welcome, dear friends!</h2>
+        <p>We're so glad you're here! Take a moment to read my heartfelt message.</p>
+    <h4>Please click the Image!👇</h4>
+    <img src="friends.jpg" alt="Friend's Photo" onclick="openModal()">
+    
+    <p>Watch the video showcasing all the photos of our memories as friends, from the beginning of our friendship until now. It beautifully captures the journey of how our friendship became solid as friends. Cherish these moments forever, as they hold the essence of our bond and the joy we share together.</p>
+       <video controls style="max-width: 100%; height: auto; margin-top: 10px;" poster="thumbnail.jpg">
+        <source src="vid.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+<div id="guestbook">
+    <h4>Guestbook</h4>
+    <textarea id="messageInput" rows="4" placeholder="Leave a message for your friends"></textarea>
+    <button onclick="addMessage()">Add Message</button>
+    <div id="messages"></div>
+    <div id="guestbook">
+    <div id="showMoreBtn" onclick="toggleMessages()" style="display: none;">Show More</div>
+</div>
+
+</div>
+
+<script>
+    function addMessage() {
+    var messageInput = document.getElementById("messageInput");
+    var message = messageInput.value.trim(); // Trim whitespace from input
+    var messagesDiv = document.getElementById("messages");
+
+    // Check if message is empty
+    if (message === "") {
+        alert("Please enter a message before adding.");
+        return;
+    }
+
+    // Create message container
+    var messageContainer = document.createElement("div");
+    messageContainer.classList.add("message-container");
+
+    // Create message element
+    var messageElement = document.createElement("p");
+    messageElement.textContent = message;
+
+    // Create reply icon for the original message
+    var replyIcon = document.createElement("i");
+    replyIcon.classList.add("fas", "fa-reply");
+    replyIcon.onclick = function() {
+        // Display reply form
+        var replyForm = document.createElement("div");
+        replyForm.classList.add("reply-form");
+        replyForm.innerHTML = `
+            <textarea class="replyInput" rows="2" placeholder="Reply to this message"></textarea>
+            <button onclick="sendReply(this)">Send Reply</button>
+        `;
+        messageContainer.appendChild(replyForm);
+    };
+
+    // Append message and reply icon to message container
+    messageContainer.appendChild(messageElement);
+    messageContainer.appendChild(replyIcon);
+
+    // Append message container to messages div
+    messagesDiv.appendChild(messageContainer);
+
+    // Clear textarea
+    messageInput.value = "";
+
+    // Check if there are more than 3 messages
+    var allMessages = document.querySelectorAll(".message-container");
+    if (allMessages.length > 3) {
+        var showMoreBtn = document.getElementById("showMoreBtn");
+        showMoreBtn.style.display = "block";
+    }
+}
+
+function toggleMessages() {
+    var allMessages = document.querySelectorAll(".message-container");
+    for (var i = 3; i < allMessages.length; i++) {
+        allMessages[i].style.display = allMessages[i].style.display === "none" ? "block" : "none";
+    }
+
+    var showMoreBtn = document.getElementById("showMoreBtn");
+    if (showMoreBtn.textContent === "Show More") {
+        showMoreBtn.textContent = "Show Less";
+    } else {
+        showMoreBtn.textContent = "Show More";
+    }
+}
+
+function sendReply(btn) {
+    var replyInput = btn.parentElement.querySelector(".replyInput").value.trim(); // Trim whitespace from input
+    var messageContainer = btn.parentElement.parentElement; // Get the parent message container
+
+    // Check if reply message is empty
+    if (replyInput === "") {
+        alert("Please enter a reply message before sending.");
+        return;
+    }
+
+    // Create reply message container
+    var replyContainer = document.createElement("div");
+    replyContainer.classList.add("reply-container");
+
+    // Create reply message element
+    var replyMessage = document.createElement("p");
+    replyMessage.textContent = "Reply: " + replyInput;
+
+    // Create reply icon for the reply message
+    var replyIcon = document.createElement("i");
+    replyIcon.classList.add("fas", "fa-reply");
+    replyIcon.onclick = function() {
+        // Display reply form for this reply
+        var replyForm = document.createElement("div");
+        replyForm.classList.add("reply-form");
+        replyForm.innerHTML = `
+            <textarea class="replyInput" rows="2" placeholder="Reply to this message"></textarea>
+            <button onclick="sendReply(this)">Send Reply</button>
+        `;
+        replyContainer.appendChild(replyForm);
+    };
+
+    // Append reply message and reply icon to reply container
+    replyContainer.appendChild(replyMessage);
+    replyContainer.appendChild(replyIcon);
+
+    // Append reply container to the original message container
+    messageContainer.appendChild(replyContainer);
+
+    // Close the reply form (optional)
+    btn.parentElement.remove();
+}
+
+</script>
+
+
+<style>
+    .message-container {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        display: flex;
+    }
+
+    .message-container p {
+        margin: 0;
+        flex: 1;
+    }
+
+    .fa-reply {
+        cursor: pointer;
+        color: #007bff;
+    }
+  #showMoreBtn { 
+  margin-top: 10px; 
+  cursor: pointer; 
+  color: blue; 
+  } 
+  .hidden { 
+  display: none; 
+  }
+</style>
+
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="container">
+        <!-- Add a container for the confetti -->
+        <div id="confettiContainer"></div>
+        <h4>My dear friends,</h4>
+        <p>I write this message with a heavy heart yet filled with love and gratitude for each one of you. Last night, as I drifted off to sleep during my journey, I found myself in a dream where we were all together, just like in the beginning when we started as a group. The nostalgia and warmth of that dream linger in my mind, and I couldn't help but feel grateful for the memories we've shared.</p>
+        <p>In that dream, I saw us laughing under the sun, exploring new places with wide-eyed wonder, and creating unforgettable moments that defined our friendship. The joy and camaraderie we experienced during those trips filled my heart with happiness, reminding me of the bond we share that transcends distance and time.</p>
+    <p>As I traveled through the landscapes of my dream, I felt a sense of peace and contentment knowing that no matter where life takes us, our friendship remains a constant source of strength and joy. The dream served as a gentle reminder of the special connection we have, one that is built on trust, understanding, and unwavering support for each other.</p>
+    <p> I believe that dreams are reflections of our deepest desires and emotions, and this dream of us traveling together once again reaffirmed the value of our friendship in my life. It highlighted the importance of cherishing the moments we have and looking forward to the adventures that await us in the future.</p>
+    <p>I want you to know how much your friendship means to me, how your presence has enriched my life in ways I can't fully express. Through thick and thin, highs and lows, you have been a constant companion, a confidante, and a source of light in my life.</p>
+    <p>Even though we may not chat or communicate daily, please know that you hold a special place in my heart, and I cherish the memories of our times together. I miss the days when we used to be inseparable, laughing and sharing moments that defined true friendship.</p>
+    <p>There are moments when I find myself reminiscing about our past adventures, and sometimes, I catch myself wishing that I could turn back time to relive those precious moments with you. The thought of not being able to see you every day, to share our joys and sorrows, sometimes weighs heavily on my mind. Your presence in my life has been a source of comfort, joy, and strength, and I am grateful for the bond we share.</p>
+    <p>As I pour my emotions into this message, tears well up in my eyes, a testament to the depth of my feelings for each one of you. I want you to understand that my decision to deactivate my social media accounts was not to distance myself from you, but rather to take a much-needed break to clear my mind and find solace amidst life's challenges. Please know that I carry you all in my thoughts and heart, and I will always be here for you, no matter the distance or time apart.</p>
+    <p>I urge you to continue enjoying each day, making the most of every moment, and creating new memories that we can share when we reunite. Life may take us on different paths for now, but our friendship remains unwavering, a beacon of light that guides us through the darkest of times.</p>
+    <p>Just like in the song, "You've Got a Friend," our friendship remains unwavering, a beacon of light that guides us through the darkest of times. Take care, my dear friends, and know that I hold you close to my heart. Until we meet again, cherish each other and the beautiful moments life has to offer.</p>
+    <p>So here's to us, to the memories we've created, and to the journeys we have yet to embark on together. May our bond continue to grow stronger, our adventures more exciting, and our friendship everlasting.</p>
+    <h4>With love and longing,</h4>
+    <h4>Say</h4>
+
+    </div>
+  </div>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="songs.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script>
+    // Function to generate confetti hearts
+    function generateConfetti() {
+        const confettiContainer = document.getElementById("confettiContainer");
+        const numConfetti = 20; // Number of confetti hearts to generate
+
+        for (let i = 0; i < numConfetti; i++) {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * 100 + "%"; // Random horizontal position
+            heart.style.animationDuration = (Math.random() * 3 + 2) + "s"; // Random animation duration
+            confettiContainer.appendChild(heart);
+        }
+    }
+
+    function openModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+        var music = document.getElementById("bgMusic");
+        music.play();
+        generateConfetti(); // Call the function to generate confetti hearts
+    }
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+        var music = document.getElementById("bgMusic");
+        music.pause();
+    }
+
+    window.onclick = function(event) {
+        var modal = document.getElementById("myModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+            var music = document.getElementById("bgMusic");
+            music.pause();
+        }
+    }
+</script>
+
+</body>
+</html>
