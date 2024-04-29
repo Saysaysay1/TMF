@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Message to Friends</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Lilita+One&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Jersey+15+Charted&family=Lilita+One&display=swap" rel="stylesheet">
+<style>
+    body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to bottom, #B2FEFA, #0ED2F7);
+}
+
+.container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease;
+    max-width: 800px;
+    margin: 20px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+    h4 {
+        color: #333;
+        text-align: left;
+        margin-left: 20px;
+        animation: slideInLeft 1s ease;
+    }
+
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    p {
+        color: #444;
+        margin-bottom: 20px;
+        animation: slideInRight 1s ease;
+    }
+
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* Modal styles */
+    .modall {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.);
+        animation: fadeIn 0.5s ease;
+    }
+
+   .modal-messages {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    width: 80%;
+    border-radius: 10px;
+    position: relative;
+    animation: slideInUp 0.5s ease;
+}
+
+
+    /* Close button */
+    .close {
+        color: #777;
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #333;
+    }
+
+    img { 
+        max-width: 100%; 
+        height: auto; 
+        transition: transform 0.3s ease-in-out;
+    }
+
+    img:hover {
+        transform: scale(1.05);
+    }
+    .welcome-animation {
+        animation: slideInUp 1s ease, colorChange 3s infinite alternate;
+    }
+
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes colorChange {
+        0% {
+            color: #333; /* Initial color */
+        }
+        50% {
+            color: #D4A017;
+        }
+        100% {
+            color: #333; /* Back to initial color */
+        }
+    }
+
+/* Modal Content */
+.modal-content {
+  background-image: linear-gradient(to bottom, #B2FEFA, #0ED2F7);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  font-family: 'Jersey 15 Charted', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 10% auto;
+  width: 80%;
+  position: relative;
+  animation: slideInUp 0.5s ease;
+}
+    
+
+/* OK Button */
+#okBtn {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+#okBtn:hover {
+  background-color: #45a049;
+}
+
+/* Modal Overlay */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+}
+
+/* Center the modal content */
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+</style>
+</head>
+<body>
+    <div id="myModal" class="modal">
+  <div class="modal-content">
+    <p id="modal-message"></p>
+    <button id="okBtn" style="background-image: linear-gradient(to bottom, #0ED2F7, #B2FEFA); color: white; font-weight: bold;">OK</button>
+  </div>
+</div>
+
+
+<div class="container" style="align-items: center;">
+    <img src="logo.png" alt="Piece Of Cake Logo" style="width: 50px; height: 50px; margin-right: 10px;">
+    <h1 class="welcome-animation" style="margin: 0; font-weight: bold; font-family: 'Black Ops One', system-ui;">Piece Of Cake</h1>
+    <hr>
+    <h3>Welcome, dear friends!</h3>
+    <h2 style="font-family: 'Pacifico', cursive; font-weight: bold; color: red;">HAPPY FRIENDSHIP DAY!</h2>
+    <p>We're so glad you're here! Take a moment to read my heartfelt message.</p>
+    <hr>
+    <h5>Please click the Image below!👇</h5>
+    <img src="friends.jpg" alt="Friend's Photo" onclick="openModall()">
+    
+    <p>Watch the video showcasing all the photos of our memories as friends, from the beginning of our friendship until now. It beautifully captures the journey of how our friendship became solid as friends. Cherish these moments forever, as they hold the essence of our bond and the joy we share together.</p>
+    <video controls style="max-width: 100%; height: auto; margin-top: 10px;" poster="thumbnail.jpg">
+        <source src="vid.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+<div class="tmf">
+     <h2>How did our friendship begin?</h2>
+     <p>
+         Our friendship began during the CITE Week in my first year when i went with ivar because I didn't have anyone with me at that time since my friends or close companions had already gone to lunch. Luckily, Ivar was there, and I asked him if he would come back in the afternoon, to which he said yes. So, we went to Robinson and visited one of our classmates, Carl. That's how our trio's bond started.
+     </p>
+     
+     <p>
+         After a few days, I had a classmate from a different section in one subject, Enzo, whom I thought was in the same section as me. I asked him why he didn't mention that was his section because I had asked in our group chat if anyone shared the same section as me to add to the group chat. From that point on, he started chatting with me, and our friendship began to blossom.
+     </p>
+     <p>
+         Whenever there were groupings, we were always together. Brydon and I initially ended up together because of our group chat where I was active, but in person, I was quiet. Due to that, we started chatting and getting closer, even eating together. Once, during a group activity in English, I was in the same group as Jhon Dave, and we made a video at his house for our exam. This event marked the beginning of both of me coming together for group activities and growing closer.
+     </p>
+    <p>
+        That's why we became close. And now, as a result, we have formed a strong bond, supporting each other through challenges, sharing moments of joy, and always showing mutual respect.
+    </p>
+</div>
+<hr>
+<div class="animation-container">
+     <p>After almost two years of being friends, I hope our bond continues to grow stronger with each passing day. Here's to many more years of laughter, love, and unforgettable memories together!🥂</p>
+     <h3>HAPPY</h3>
+    <img src="adc.gif" alt="Animation GIF">
+    <h3> Of Friendship!❤️</h3>
+</div>
+</div>
+
+<!-- Modal -->
+<div id="message" class="modal">
+  <!-- Modal content -->
+  <div class="modal-messages">
+    <span class="close" onclick="closeModall()">&times;</span>
+    <div class="messages">
+        <h4 style="font-family: 'Lobster', cursive; font-weight: bold; font-size: 20px;">My dear friends,</h4>
+        <p style="font-family: 'Lobster', cursive; font-weight: bold; font-size: 20px;">I write this message with a heavy heart yet filled with love and gratitude for each one of you. Last night, as I drifted off to sleep during my journey, I found myself in a dream where we were all together, just like in the beginning when we started as a group. The nostalgia and warmth of that dream linger in my mind, and I couldn't help but feel grateful for the memories we've shared.</p>
+             <p style="font-family: 'Lobster', cursive; font-weight: bold; font-size: 20px;">In that dream, I saw us laughing under the sun, exploring new places with wide-eyed wonder, and creating unforgettable moments that defined our friendship. The joy and camaraderie we experienced during those trips filled my heart with happiness, reminding me of the bond we share that transcends distance and time.</p>
+     <p style="font-family: 'Lobster', cursive; font-weight: bold; font-size: 20px;"">As I traveled through the landscapes of my dream, I felt a sense of peace and contentment knowing that no matter where life takes us, our friendship remains a constant source of strength and joy. The dream served as a gentle reminder of the special connection we have, one that is built on trust, understanding, and unwavering support for each other.</p>
+     <p style="font-family: 'Lobster', cursive; font-weight: bold;font-size: 20px;""> I believe that dreams are reflections of our deepest desires and emotions, and this dream of us traveling together once again reaffirmed the value of our friendship in my life. It highlighted the importance of cherishing the moments we have and looking forward to the adventures that await us in the future.</p>
+     <p style="font-family: 'Lobster', cursive; font-weight: bold;font-size: 20px;">I want you to know how much your friendship means to me, how your presence has enriched my life in ways I can't fully express. Through thick and thin, highs and lows, you have been a constant companion, a confidante, and a source of light in my life.</p>
+     <p style="font-family: 'Lobster', cursive; font-weight: bold;font-size: 20px;">Even though we may not chat or communicate daily, please know that you hold a special place in my heart, and I cherish the memories of our times together. I miss the days when we used to be inseparable, laughing and sharing moments that defined true friendship.</p>
+     <p style="font-family: 'Lobster', cursive; font-weight: bold;font-size: 20px;">There are moments when I find myself reminiscing about our past adventures, and sometimes, I catch myself wishing that I could turn back time to relive those precious moments with you. The thought of not being able to see you every day, to share our joys and sorrows, sometimes weighs heavily on my mind. Your presence in my life has been a source of comfort, joy, and strength, and I am grateful for the bond we share.</p>
+     <p style="font-family: 'Lobster', cursive; font-weight: bold;font-size: 20px;">As I pour my emotions into this message, tears well up in my eyes, a testament to the depth of my feelings for each one of you. I want you to understand that my decision to deactivate my social media accounts was not to distance myself from you, but rather to take a much-needed break to clear my mind and find solace amidst life's challenges. Please know that I carry you all in my thoughts and heart, and I will always be here for you, no matter the distance or time apart.</p>
+     <p style="font-family: 'Lobster', cursive; font-weight: bold;font-size: 20px;">I urge you to continue enjoying each day, making the most of every moment, and creating new memories that we can share when we reunite. Life may take us on different paths for now, but our friendship remains unwavering, a beacon of light that guides us through the darkest of times.</p>
+     <p style="font-family: 'Lobster', cursive; font-weight: bold;font-size: 20px;">Just like in the song, "You've Got a Friend," our friendship remains unwavering, a beacon of light that guides us through the darkest of times. Take care, my dear friends, and know that I hold you close to my heart. Until we meet again, cherish each other and the beautiful moments life has to offer.</p>
+     <p style="font-family: 'Lobster', cursive; font-weight: bold;font-size: 20px;">So here's to us, to the memories we've created, and to the journeys we have yet to embark on together. May our bond continue to grow stronger, our adventures more exciting, and our friendship everlasting.</p>
+    <h4 style="font-family: 'Lobster', cursive; font-weight: bold;font-size: 20px;">With love and longing,</h4>
+    <h4 style="font-family: 'Lobster', cursive; font-weight: bold;font-size: 20px;">Say</h4>
+    </div>
+  </div>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="songs.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script>
+    function openModall() {
+    var modal = document.getElementById("message");
+    modal.style.display = "block";
+    var music = document.getElementById("bgMusic");
+    music.currentTime = 0; // Reset playback position to beginning
+    music.play();
+}
+
+function closeModall() {
+    var modal = document.getElementById("message");
+    modal.style.display = "none";
+    var music = document.getElementById("bgMusic");
+    music.pause();
+    music.currentTime = 0; // Reset playback position to beginning
+}
+
+window.onclick = function(event) {
+    var modal = document.getElementById("message");
+    if (event.target == modal) {
+        modal.style.display = "none";
+        var music = document.getElementById("bgMusic");
+        music.pause();
+        music.currentTime = 0; // Reset playback position to beginning
+    }
+}
+</script>
+
+<script src="friend.js"></script>
+
+</body>
+</html>
